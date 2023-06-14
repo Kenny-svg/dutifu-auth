@@ -58,6 +58,12 @@
         ><router-link to="/register">Sign up</router-link></span
       >
     </p>
+    <div v-if="success">
+      {{ success.data.message }}
+    </div>
+    <!-- <div v-for="error in loginError" :key="error.id">
+      <p class="text-red-600">{{ error.toString() }}</p>
+    </div> -->
   </Form>
 </template>
 <script setup>
@@ -73,6 +79,9 @@ const authStore = useAuthStore();
 
 const password = ref("");
 const showPassword = ref(false);
+
+const success = ref("");
+const loginError = ref(null);
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -91,9 +100,11 @@ const login = (values) => {
   authStore.login(values).then(
     (response) => {
       console.log(response);
+      success.value = response;
       router.push("/");
     },
     (error) => {
+      loginError.value = error;
       console.error(error);
     }
   );

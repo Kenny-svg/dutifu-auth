@@ -4,7 +4,7 @@
       class="bg-white text-secondary py-3.5 px-6 md:flex justify-between items-center"
     >
       <div class="flex items-center">
-        <img class="w-20" alt="brand logo" src="logo.svg" />
+        <!-- <img class="w-20" alt="brand logo" src="logo.svg" /> -->
       </div>
 
       <span

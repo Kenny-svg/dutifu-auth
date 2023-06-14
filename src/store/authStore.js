@@ -39,7 +39,7 @@ export const useAuthStore = defineStore('auth',{
                     return Promise.resolve(response)
                 },
                 error => {
-                    return Promise.reject(error.response.data.details)
+                    return Promise.reject(error.response.data.error)
                 }
             )
         },
