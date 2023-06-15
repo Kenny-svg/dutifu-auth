@@ -23,14 +23,14 @@ body {
   }
   .password-toggle-reg {
     position: absolute;
-    top: 70%;
+    top: 80%;
     right:15%;
     /* transform: translateY(-50%); */
     cursor: pointer;
   }
   .password-toggle-reg-two {
     position: absolute;
-    top: 90%;
+    top: 100%;
     right:15%;
     /* transform: translateY(-50%); */
     cursor: pointer;
