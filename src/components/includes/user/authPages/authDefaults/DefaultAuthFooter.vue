@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-primary pt-[4rem] md:pb-[4.5rem] md:pl-30">
+  <footer class="bg-primary pt-[4rem] md:pb-[4.5rem] md:pl-30 w-full">
     <div
       class="grid grid-cols-2 md:grid-cols-4 mx-auto w-full md:w-11/12 items-center border-b pb-10 border-secondary p-3"
     >
@@ -50,8 +50,8 @@
       <div class="md:mt-0 mt-5">
         <div class="flex text-white">
           <p>Download the app</p>
-          <i class="bi bi-apple mx-4"></i>
-          <i class="bi bi-google-play mx-4"></i>
+          <i class="bi bi-apple md:mx-4"></i>
+          <i class="bi bi-google-play md:mx-4"></i>
         </div>
       </div>
     </div>
