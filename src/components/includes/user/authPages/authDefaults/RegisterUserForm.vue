@@ -57,7 +57,7 @@
       </span>
     </div>
     <ErrorMessage class="text-red-500" name="comfirmPassword" />
-    {{ validationMsg }}
+    <!-- {{ validationMsg }} -->
     <div class="flex items-start mb-6">
       <div class="flex items-center h-5">
         <Field
@@ -98,6 +98,7 @@ import * as yup from "yup";
 import { ref } from "vue";
 import { useAuthStore } from "../../../../../store/authStore";
 import { useRouter } from "vue-router";
+import { notify } from "@kyvg/vue3-notification";
 
 const router = useRouter();
 
@@ -113,6 +114,11 @@ let validationMsg = ref("");
 // const phone = ref('')
 const success = ref("");
 const registrationError = ref(null);
+notify({
+  title: registrationError,
+  text: "failed",
+  type: "error",
+});
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -128,8 +134,6 @@ const schema = yup.object().shape({
     .min(6, "Password must be at least 6 characters"),
   remember: yup.string().required("You must agree to the Terms and Conditions"),
 });
-
-console.log(registrationError.value);
 
 const signUp = (values) => {
   if (password.value === comfirmPassword.value) {

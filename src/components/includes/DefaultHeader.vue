@@ -4,7 +4,7 @@
       class="bg-white text-secondary py-3.5 px-6 md:flex justify-between items-center"
     >
       <div class="flex items-center">
-        <!-- <img class="w-20" alt="brand logo" src="../../assets/logo.svg" /> -->
+        <img class="w-20" alt="brand logo" :src="image" />
       </div>
 
       <span
@@ -51,6 +51,7 @@
 <script setup>
 import { ref } from "vue";
 import { useAuthStore } from "../../store/authStore";
+import image from "../../assets/logo.svg";
 const authStore = useAuthStore();
 const userStatus = ref(authStore.initialState.status.loggedIn);
 let open = ref(false);
