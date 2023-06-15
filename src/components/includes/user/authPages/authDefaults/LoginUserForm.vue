@@ -20,7 +20,9 @@
         <i :class="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
       </span>
     </div>
-
+    <div v-if="loginError">
+      <p class="text-red-600">password is incorrect</p>
+    </div>
     <ErrorMessage name="password" />
     <div class="flex justify-end text-primary w-full">
       <router-link class="mb-2" to="/forgot_password">

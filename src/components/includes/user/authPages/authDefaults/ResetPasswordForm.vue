@@ -1,6 +1,6 @@
 <template>
   <Form @submit="resetPassword" :validation-schema="schema">
-    <div class="mb-6">
+    <div class="mb-6 relative">
       <label class="block mb-2 text-sm font-bold text-primary">Password</label>
       <Field
         v-model="password"
@@ -8,12 +8,12 @@
         :type="showPassword ? 'text' : 'password'"
         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
       />
-      <span class="password-toggle-reg-reset" @click="toggleShowPassword">
+      <span class="absolute right-5 -mt-8" @click="toggleShowPassword">
         <i :class="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
       </span>
     </div>
     <ErrorMessage name="password" />
-    <div class="mb-6">
+    <div class="mb-6 relative">
       <label class="block mb-2 text-sm font-bold text-primary"
         >Re-enter Password</label
       >
@@ -23,10 +23,7 @@
         :type="showcomfirmPassword ? 'text' : 'password'"
         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
       />
-      <span
-        class="password-toggle-reg-reset-two"
-        @click="toggleShowcomfirmPassword"
-      >
+      <span class="absolute right-5 -mt-8" @click="toggleShowcomfirmPassword">
         <i :class="showcomfirmPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
       </span>
     </div>
