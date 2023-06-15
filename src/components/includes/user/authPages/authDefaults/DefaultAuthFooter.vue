@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-primary">
+  <footer class="bg-primary pb-10 pt-10">
     <div
       class="grid grid-cols-2 md:grid-cols-4 md:mx-auto w-full md:w-11/12 items-center border-b pb-10 border-secondary p-3"
     >

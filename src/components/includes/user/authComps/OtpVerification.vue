@@ -79,7 +79,7 @@ const handleInput = (event, index) => {
       otpInputs.value[index].focus();
     } else {
       // Last input field, submit OTP or perform necessary action
-      console.log("OTP submitted:", getOtpValue());
+      // console.log("OTP submitted:", getOtpValue());
     }
   }
 };
@@ -100,30 +100,25 @@ const getOtpValue = () => {
 
   return otpValue;
 };
-const resendOtp = () => {
-  authStore.resendOtp().then(
+const OtpVerified = () => {
+  const data = { email, otp: getOtpValue() };
+  // console.log(otpValue);
+  authStore.verifyOtp(data).then(
     (response) => {
-      console.log(response);
+      // console.log(response);
+      router.push(`/reset_password/${data.email}/${data.otp}`);
     },
     (error) => {
       console.error(error);
     }
   );
 };
-const OtpVerified = () => {
-  const data = { email, otp: getOtpValue() };
-  // console.log(otpValue);
-  authStore.verifyOtp(data).then(
+const resendOtp = () => {
+  authStore.resendOtp().then(
     (response) => {
-      // console.log(response)
-      // console.log(response.data.value)
-      // success.value = response;
       console.log(response);
-      // router.push(`/reset_password/${(data.email, data.otp)}`);
-      router.push(`/reset_password/${data.email}/${data.otp}`);
     },
     (error) => {
-      // const arr = Object.entries(error)
       console.error(error);
     }
   );

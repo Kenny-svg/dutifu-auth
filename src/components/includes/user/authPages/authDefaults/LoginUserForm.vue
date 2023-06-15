@@ -12,22 +12,21 @@
     <div class="mb-6">
       <label class="block mb-2 text-sm font-bold text-primary">Password</label>
       <Field
-        v-model="password"
         name="password"
         :type="showPassword ? 'text' : 'password'"
         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
       />
-      <i
-        class="flex justify-end -mt-7 mr-4 mb-4"
-        @click="toggleShowPassword"
-        :class="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"
-      ></i>
-
-      <ErrorMessage name="password" />
+      <span class="password-toggle" @click="toggleShowPassword">
+        <i :class="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+      </span>
     </div>
-    <router-link class="mb-2" to="/forgot_password">
-      <p class="flex justify-end text-primary">forgot password?</p>
-    </router-link>
+
+    <ErrorMessage name="password" />
+    <div class="flex justify-end text-primary w-full">
+      <router-link class="mb-2" to="/forgot_password">
+        <p>forgot password?</p>
+      </router-link>
+    </div>
 
     <div class="flex items-start mb-6">
       <div class="flex items-center h-5">

@@ -37,14 +37,11 @@
         :type="showPassword ? 'text' : 'password'"
         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
       />
-      <ErrorMessage class="text-red-500" name="password" />
-
-      <i
-        class="flex justify-end -mt-7 mr-4"
-        @click="toggleShowPassword"
-        :class="comfirmPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"
-      ></i>
+      <span class="password-toggle-reg" @click="toggleShowPassword">
+        <i :class="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+      </span>
     </div>
+    <ErrorMessage name="password" />
     <div class="mb-6">
       <label class="block mb-2 text-sm font-bold text-primary"
         >Re-enter Password</label
@@ -55,14 +52,11 @@
         :type="showcomfirmPassword ? 'text' : 'password'"
         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
       />
-      <ErrorMessage class="text-red-500" name="comfirmPassword" />
-
-      <i
-        class="flex justify-end -mt-7 mr-4"
-        @click="toggleShowcomfirmPassword"
-        :class="showcomfirmPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"
-      ></i>
+      <span class="password-toggle-reg-two" @click="toggleShowcomfirmPassword">
+        <i :class="showcomfirmPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+      </span>
     </div>
+    <ErrorMessage class="text-red-500" name="comfirmPassword" />
     {{ validationMsg }}
     <div class="flex items-start mb-6">
       <div class="flex items-center h-5">
