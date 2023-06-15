@@ -51,9 +51,9 @@ const userStatus = ref(authStore.initialState.status.loggedIn);
 let open = ref(false);
 let Links = [
   { name: "Business Directory", link: "/" },
-  { name: "Features", link: "/profile" },
-  { name: "Pricing", link: "/about" },
-  { name: "Blog", link: "/blo" },
+  { name: "Features", link: "/" },
+  { name: "Pricing", link: "/" },
+  { name: "Blog", link: "/" },
 ];
 const menuOpen = () => {
   open.value = !open.value;
