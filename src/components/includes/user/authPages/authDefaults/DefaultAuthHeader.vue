@@ -34,7 +34,7 @@
 
         <li class="font-bold text-primary md:mx-4">
           <router-link to="/register">
-            <button class="btn-primary mt-5">Sign up</button>
+            <button class="btn-primary md:mt-0 :mt-5">Sign up</button>
           </router-link>
         </li>
       </ul>
