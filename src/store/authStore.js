@@ -22,30 +22,29 @@ export const useAuthStore = defineStore('auth',{
     }),
     actions: {
         async register(values) {
-                return await axios.post('auth/register', values).then(
-                    response => {
-                        return Promise.resolve(response)
-                    },
-                    error => {
-                        return Promise.reject(error.response.data.details)
-                    }
-                )
-        },
-        async login(values) {
-            return await axios.post('auth/login', values).then(
-                
-                response => {
-                    const token = response.data.data.token
-                    localStorage.setItem("userToken", token)
-                    return Promise.resolve(response)
-                    this.$state.loading = true
-                },
-                error => {
-                    return Promise.reject(error.response.data.error)
-                    this.$state.loading = true
-                }
-            )
-        },
+            this.loading = true; 
+            try {
+              const response = await axios.post('auth/register', values);
+              return Promise.resolve(response);
+            } catch (error) {
+              return Promise.reject(error.response.data.details);
+            } finally {
+              this.loading = false; 
+            }
+          },
+          async login(values) {
+            this.loading = true;
+            try {
+              const response = await axios.post('auth/login', values);
+              const token = response.data.data.token;
+              localStorage.setItem("userToken", token);
+              return Promise.resolve(response);
+            } catch (error) {
+              return Promise.reject(error.response.data.error);
+            } finally {
+              this.loading = false;
+            }
+          },
         async forgotPassword(values) {
             return await axios.post('auth/password/email', values).then(
                 response => {

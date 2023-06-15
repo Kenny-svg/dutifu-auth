@@ -1,8 +1,8 @@
 <template>
+  <div v-if="isLoading">
+    <p class="text-primary font-bold text-center mb-5 mt-5">loading...</p>
+  </div>
   <Form @submit="login" :validation-schema="schema">
-    <div v-if="loading">
-      <p class="text-primary font-bold">loading...</p>
-    </div>
     <div class="mb-6">
       <label class="block mb-2 text-sm font-bold text-primary">Email</label>
       <Field
@@ -34,7 +34,7 @@
       </router-link>
     </div>
     <div v-if="loginError">
-      <p class="text-red-600">password is incorrect</p>
+      <p class="text-red-600">email or password is incorrect</p>
     </div>
 
     <div class="flex items-start mb-6">
@@ -63,7 +63,9 @@
     <p class="text-center mb-10 text-sm text-gray-400">
       Don't have an account?
       <span class="text-primary"
-        ><router-link to="/register">Sign up</router-link></span
+        ><router-link :disabled="isLoading" to="/register"
+          >Sign up</router-link
+        ></span
       >
     </p>
     <div v-if="success">
@@ -74,16 +76,15 @@
 <script setup>
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useAuthStore } from "../../../../../store/authStore";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 
 const authStore = useAuthStore();
-
-const loading = authStore.loading;
-console.log(loading, "loading");
+const isLoading = computed(() => authStore.loading);
+console.log(isLoading, "loading");
 const password = ref("");
 const showPassword = ref(false);
 

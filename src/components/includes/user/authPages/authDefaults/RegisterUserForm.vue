@@ -1,4 +1,7 @@
 <template>
+  <div v-if="isLoading">
+    <p class="text-primary font-bold text-center mb-5 mt-5">loading...</p>
+  </div>
   <Form @submit="signUp" :validation-schema="schema">
     <div class="mb-6">
       <label class="block mb-2 text-sm font-bold text-primary">Full name</label>
@@ -95,7 +98,7 @@
 <script setup>
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useAuthStore } from "../../../../../store/authStore";
 import { useRouter } from "vue-router";
 import { notify } from "@kyvg/vue3-notification";
@@ -103,6 +106,7 @@ import { notify } from "@kyvg/vue3-notification";
 const router = useRouter();
 
 const authStore = useAuthStore();
+const isLoading = computed(() => authStore.loading);
 const password = ref("");
 const showPassword = ref(false);
 const comfirmPassword = ref("");
