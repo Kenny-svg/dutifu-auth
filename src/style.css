@@ -16,14 +16,14 @@ body {
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .password-toggle {
     position: absolute;
-    top: 41.4%;
+    top: 60%;
     right:15%;
     /* transform: translateY(-50%); */
     cursor: pointer;
   }
   .password-toggle-reg {
     position: absolute;
-    top: 80%;
+    top: 60%;
     right:15%;
     /* transform: translateY(-50%); */
     cursor: pointer;
