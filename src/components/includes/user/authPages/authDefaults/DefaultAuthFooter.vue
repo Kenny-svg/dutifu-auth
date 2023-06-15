@@ -50,14 +50,14 @@
       <div class="md:mt-0 mt-5">
         <div class="flex text-white">
           <p>Download the app</p>
-          <i class="bi bi-apple md:mx-4"></i>
-          <i class="bi bi-google-play md:mx-4"></i>
+          <i class="bi bi-apple mx-2 md:mx-4"></i>
+          <i class="bi bi-google-play mx-2 md:mx-4"></i>
         </div>
       </div>
     </div>
     <div class="flex w-11/12 mx-auto mt-10 text-white">
       <div><i class="bi bi-c-circle"></i>2022 Ditiful</div>
-      <div class="mx-20">
+      <div class="md:mx-20">
         <div class="flex">
           <p class="md:mx-4">Terms of Service</p>
           <p class="mx-4">Privacy Policy</p>
