@@ -101,6 +101,7 @@ const login = (values) => {
       console.log(response);
       success.value = response;
       router.push("/");
+      location.reload();
     },
     (error) => {
       loginError.value = error;
