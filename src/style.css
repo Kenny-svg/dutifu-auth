@@ -8,7 +8,7 @@ body {
 }
 .password-toggle {
   position: absolute;
-  top: 57%;
+  top: 62.4%;
   right: 36%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -18,35 +18,35 @@ body {
     position: absolute;
     top: 41.4%;
     right:15%;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     cursor: pointer;
   }
   .password-toggle-reg {
     position: absolute;
-    top: 70%;
+    top: 80%;
     right:15%;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     cursor: pointer;
   }
   .password-toggle-reg-two {
     position: absolute;
     top: 80%;
     right:15%;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     cursor: pointer;
   }
   .password-toggle-reg-reset {
     position: absolute;
     top: 31%;
     right:15%;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     cursor: pointer;
   }
   .password-toggle-reg-reset-two {
     position: absolute;
     top:41.5%;
     right:15%;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     cursor: pointer;
   }
 }

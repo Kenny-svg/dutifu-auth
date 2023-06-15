@@ -114,11 +114,11 @@ let validationMsg = ref("");
 // const phone = ref('')
 const success = ref("");
 const registrationError = ref(null);
-notify({
-  title: registrationError,
-  text: "failed",
-  type: "error",
-});
+// notify({
+//   title: registrationError,
+//   text: "failed",
+//   type: "error",
+// });
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
