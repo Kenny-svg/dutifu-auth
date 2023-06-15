@@ -1,7 +1,7 @@
 <template>
-  <footer class="bg-primary pt-[4rem] md:pb-[4.5rem] md:pl-30 w-full">
+  <footer class="bg-primary pt-[4rem] md:pb-[4.5rem] pl-0 md:pl-30 w-full">
     <div
-      class="grid grid-cols-2 md:grid-cols-4 mx-auto w-full md:w-11/12 items-center border-b pb-10 border-secondary p-3"
+      class="grid grid-cols-2 md:grid-cols-4 md:mx-auto w-full md:w-11/12 items-center border-b pb-10 border-secondary p-3"
     >
       <div>
         <ul class="">
