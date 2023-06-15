@@ -30,18 +30,20 @@
         <li
           class="md:mx-4 md:my-0 my-6 font-normal"
           :class="userStatus ? 'block' : 'hidden'"
-          v-if="userStatus"
         >
-          <button @click="logout" class="btn-primary">Logout</button>
+          <button v-if="userStatus" @click="logout" class="btn-primary">
+            Logout
+          </button>
         </li>
         <router-link v-if="!userStatus" to="/login">
           <li class="text-primary md:mx-4">Login</li>
         </router-link>
-        <li class="font-bold text-primary md:mx-4">
-          <router-link v-if="!userStatus" to="/register">
+
+        <router-link v-if="!userStatus" to="/register">
+          <li class="font-bold text-primary md:mx-4">
             <button class="btn-primary">Sign up</button>
-          </router-link>
-        </li>
+          </li>
+        </router-link>
       </ul>
     </div>
   </header>
@@ -56,7 +58,7 @@ let Links = [
   { name: "Business Directory", link: "/" },
   { name: "Features", link: "/profile" },
   { name: "Pricing", link: "/about" },
-  { name: "Blog", link: "/blog" },
+  { name: "Blog", link: "/bloggg" },
 ];
 const menuOpen = () => {
   open.value = !open.value;

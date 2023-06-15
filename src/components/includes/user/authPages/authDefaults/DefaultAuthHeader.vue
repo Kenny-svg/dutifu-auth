@@ -27,12 +27,10 @@
             link.name
           }}</a>
         </li>
-        <div v-if="userStatus">Logout</div>
-        <div v-else>
-          <router-link to="/login">
-            <li class="text-primary md:mx-4">Login</li>
-          </router-link>
-        </div>
+        <router-link to="/login">
+          <li class="text-primary md:mx-4">Login</li>
+        </router-link>
+
         <li class="font-bold text-primary md:mx-4">
           <router-link to="/register">
             <button class="btn-primary">Sign up</button>
@@ -52,7 +50,7 @@ let Links = [
   { name: "Business Directory", link: "/" },
   { name: "Features", link: "/profile" },
   { name: "Pricing", link: "/about" },
-  { name: "Blog", link: "/blog" },
+  { name: "Blog", link: "/blo" },
 ];
 const menuOpen = () => {
   open.value = !open.value;

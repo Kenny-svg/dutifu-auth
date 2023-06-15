@@ -61,9 +61,9 @@
     <div v-if="success">
       {{ success.data.message }}
     </div>
-    <!-- <div v-for="error in loginError" :key="error.id">
-      <p class="text-red-600">{{ error.toString() }}</p>
-    </div> -->
+    <div v-if="loginError">
+      <p class="text-red-600">password is incorrect</p>
+    </div>
   </Form>
 </template>
 <script setup>
