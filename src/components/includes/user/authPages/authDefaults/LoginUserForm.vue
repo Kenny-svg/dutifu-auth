@@ -1,5 +1,8 @@
 <template>
   <Form @submit="login" :validation-schema="schema">
+    <div v-if="loading">
+      <p class="text-primary font-bold">loading...</p>
+    </div>
     <div class="mb-6">
       <label class="block mb-2 text-sm font-bold text-primary">Email</label>
       <Field
@@ -78,6 +81,7 @@ const router = useRouter();
 
 const authStore = useAuthStore();
 
+const loading = authStore.loading;
 const password = ref("");
 const showPassword = ref(false);
 
