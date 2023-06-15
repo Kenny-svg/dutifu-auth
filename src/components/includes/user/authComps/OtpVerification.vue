@@ -60,12 +60,14 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 import { ref, onMounted } from "vue";
 import { useAuthStore } from "../../../../store/authStore";
 import { useRouter, useRoute } from "vue-router";
+import { notify } from "@kyvg/vue3-notification";
 
 const route = useRoute();
 const email = route.params.id;
 const router = useRouter();
 
 const authStore = useAuthStore();
+const otpFailed = ref("");
 
 const otpInputs = ref([]);
 
@@ -109,6 +111,12 @@ const OtpVerified = () => {
       router.push(`/reset_password/${data.email}/${data.otp}`);
     },
     (error) => {
+      otpFailed.value = error;
+      notify({
+        title: "Failed",
+        text: error,
+        type: "error",
+      });
       console.error(error);
     }
   );

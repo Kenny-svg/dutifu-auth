@@ -39,11 +39,12 @@ import { provide } from "vue";
 import * as yup from "yup";
 import { useAuthStore } from "../../../../../store/authStore";
 import { useRouter } from "vue-router";
+import { notify } from "@kyvg/vue3-notification";
 
 const router = useRouter();
 
 const authStore = useAuthStore();
-
+const notFound = ref("");
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
 });
@@ -55,6 +56,12 @@ const forgotPassword = (email) => {
       router.push(`/otp_sent/${email.email}`);
     },
     (error) => {
+      notFound.value = error;
+      notify({
+        title: "Failed",
+        text: error,
+        type: "error",
+      });
       console.error(error);
     }
   );

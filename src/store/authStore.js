@@ -52,7 +52,7 @@ export const useAuthStore = defineStore('auth',{
                     return Promise.resolve(response)
                 },
                 error => {
-                    return Promise.reject(error)
+                    return Promise.reject(error.response.data.error)
                 }
             )
         },
@@ -62,7 +62,7 @@ export const useAuthStore = defineStore('auth',{
                     return Promise.resolve(response)
                 },  
                 error => {
-                    return Promise.reject(error)
+                    return Promise.reject(error.response.data.error)
                 }
             )
         },

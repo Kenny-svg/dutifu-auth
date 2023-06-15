@@ -3,6 +3,6 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <notifications position="bottom right" />
+  <notifications position="top right" />
   <RouterView />
 </template>
