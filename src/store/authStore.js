@@ -16,7 +16,8 @@ const initialState = user
 export const useAuthStore = defineStore('auth',{
     state: () => ({
         initialState,
-        email: null
+        email: null,
+        loading: false
         
     }),
     actions: {
@@ -37,9 +38,11 @@ export const useAuthStore = defineStore('auth',{
                     const token = response.data.data.token
                     localStorage.setItem("userToken", token)
                     return Promise.resolve(response)
+                    this.$state.loading = true
                 },
                 error => {
                     return Promise.reject(error.response.data.error)
+                    this.$state.loading = true
                 }
             )
         },

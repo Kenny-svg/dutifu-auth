@@ -41,7 +41,7 @@
 
         <router-link v-if="!userStatus" to="/register">
           <li class="font-bold text-primary md:mx-4">
-            <button class="btn-primary">Sign up</button>
+            <button class="btn-primary mt-5">Sign up</button>
           </li>
         </router-link>
       </ul>

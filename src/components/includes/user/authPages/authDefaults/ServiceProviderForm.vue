@@ -29,7 +29,7 @@
       />
       <ErrorMessage class="text-red-500" name="phone" />
     </div>
-    <div class="mb-6">
+    <div class="mb-6 relative">
       <label class="block mb-2 text-sm font-bold text-primary">Password</label>
       <Field
         v-model="password"
@@ -37,15 +37,12 @@
         :type="showPassword ? 'text' : 'password'"
         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
       />
-      <ErrorMessage class="text-red-500" name="password" />
-
-      <i
-        class="absolute -mt-8 ml-72 lg:ml-[380px] md:ml-[200px] sm:ml-[200px]"
-        @click="toggleShowPassword"
-        :class="comfirmPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"
-      ></i>
+      <span class="absolute right-5 -mt-8" @click="toggleShowPassword">
+        <i :class="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+      </span>
     </div>
-    <div class="mb-6">
+    <ErrorMessage name="password" />
+    <div class="mb-6 relative">
       <label class="block mb-2 text-sm font-bold text-primary"
         >Re-enter Password</label
       >
@@ -55,15 +52,12 @@
         :type="showcomfirmPassword ? 'text' : 'password'"
         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
       />
-      <ErrorMessage class="text-red-500" name="comfirmPassword" />
-
-      <i
-        class="absolute -mt-8 ml-72 md:ml-[380px]"
-        @click="toggleShowcomfirmPassword"
-        :class="showcomfirmPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"
-      ></i>
+      <span class="absolute right-5 -mt-8" @click="toggleShowcomfirmPassword">
+        <i :class="showcomfirmPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+      </span>
     </div>
-    {{ validationMsg }}
+    <ErrorMessage class="text-red-500" name="comfirmPassword" />
+    <!-- {{ validationMsg }} -->
     <div class="flex items-start mb-6">
       <div class="flex items-center h-5">
         <Field
@@ -104,6 +98,7 @@ import * as yup from "yup";
 import { ref } from "vue";
 import { useAuthStore } from "../../../../../store/authStore";
 import { useRouter } from "vue-router";
+import { notify } from "@kyvg/vue3-notification";
 
 const router = useRouter();
 
@@ -119,6 +114,11 @@ let validationMsg = ref("");
 // const phone = ref('')
 const success = ref("");
 const registrationError = ref(null);
+// notify({
+//   title: registrationError,
+//   text: "failed",
+//   type: "error",
+// });
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -134,8 +134,6 @@ const schema = yup.object().shape({
     .min(6, "Password must be at least 6 characters"),
   remember: yup.string().required("You must agree to the Terms and Conditions"),
 });
-
-console.log(registrationError.value);
 
 const signUp = (values) => {
   if (password.value === comfirmPassword.value) {
