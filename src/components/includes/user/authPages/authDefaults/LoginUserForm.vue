@@ -17,20 +17,24 @@
       <Field
         name="password"
         :type="showPassword ? 'text' : 'password'"
-        class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+        class="bg-gray-50 border border-secondary text-primary font-bold rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
       />
-      <span class="absolute right-5 -mt-8" @click="toggleShowPassword">
+      <span
+        class="absolute right-5 -mt-8 text-primary"
+        @click="toggleShowPassword"
+      >
         <i :class="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
       </span>
     </div>
-    <div v-if="loginError">
-      <p class="text-red-600">password is incorrect</p>
-    </div>
+
     <ErrorMessage name="password" />
     <div class="flex justify-end text-primary w-full">
-      <router-link class="mb-2" to="/forgot_password">
+      <router-link class="-mt-5 mb-2" to="/forgot_password">
         <p>forgot password?</p>
       </router-link>
+    </div>
+    <div v-if="loginError">
+      <p class="text-red-600">password is incorrect</p>
     </div>
 
     <div class="flex items-start mb-6">
@@ -56,7 +60,7 @@
     <button type="submit" class="btn-primary bg-primary text-white w-full mb-2">
       Login
     </button>
-    <p class="text-center mb-10">
+    <p class="text-center mb-10 text-sm text-gray-400">
       Don't have an account?
       <span class="text-primary"
         ><router-link to="/register">Sign up</router-link></span
@@ -64,9 +68,6 @@
     </p>
     <div v-if="success">
       {{ success.data.message }}
-    </div>
-    <div v-if="loginError">
-      <p class="text-red-600">password is incorrect</p>
     </div>
   </Form>
 </template>
@@ -82,6 +83,7 @@ const router = useRouter();
 const authStore = useAuthStore();
 
 const loading = authStore.loading;
+console.log(loading, "loading");
 const password = ref("");
 const showPassword = ref(false);
 
