@@ -82,7 +82,7 @@ const router = useRouter();
 
 const authStore = useAuthStore();
 const isLoading = computed(() => authStore.loading);
-console.log(isLoading, "loading");
+// console.log(isLoading, "loading");
 const password = ref("");
 const showPassword = ref(false);
 
@@ -105,14 +105,14 @@ const toggleShowPassword = () => {
 const login = (values) => {
   authStore.login(values).then(
     (response) => {
-      console.log(response);
+      //   console.log(response);
       success.value = response;
       router.push("/");
       location.reload();
     },
     (error) => {
       loginError.value = error;
-      console.error(error);
+      //   console.error(error);
       notify({
         title: "Failed",
         text: error,

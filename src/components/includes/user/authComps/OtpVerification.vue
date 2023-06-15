@@ -68,7 +68,6 @@ const router = useRouter();
 
 const authStore = useAuthStore();
 const otpFailed = ref("");
-
 const otpInputs = ref([]);
 
 //  otpInputs.value = Array.from($refs.otpInputs);
@@ -97,7 +96,6 @@ const getOtpValue = () => {
 
   otpInputs.value.forEach((input) => {
     otpValue += input.value;
-    console.log(otpValue);
   });
 
   return otpValue;
@@ -117,17 +115,15 @@ const OtpVerified = () => {
         text: error,
         type: "error",
       });
-      console.error(error);
+      // console.error(error);
     }
   );
 };
 const resendOtp = () => {
   authStore.resendOtp().then(
-    (response) => {
-      console.log(response);
-    },
+    (response) => {},
     (error) => {
-      console.error(error);
+      // console.error(error);
     }
   );
 };

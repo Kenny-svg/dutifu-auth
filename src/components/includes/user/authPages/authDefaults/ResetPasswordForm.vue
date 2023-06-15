@@ -28,7 +28,6 @@
       </span>
     </div>
     <ErrorMessage class="text-red-500" name="comfirmPassword" />
-    {{ validationMsg }}
 
     <button type="submit" class="btn-primary bg-primary text-white w-full mb-2">
       Reset password
@@ -44,6 +43,7 @@ import * as yup from "yup";
 import { Form, Field, ErrorMessage } from "vee-validate";
 import { useRoute, useRouter } from "vue-router";
 import { useAuthStore } from "../../../../../store/authStore";
+import { notify } from "@kyvg/vue3-notification";
 
 const authStore = useAuthStore();
 
@@ -78,13 +78,12 @@ const resetPassword = () => {
   if (password.value === comfirmPassword.value) {
     validated.value = true;
     validationMsg = "";
-    console.log("clicked");
     const passwordStr = password.value.toString();
     const data = { email, otp, password: passwordStr };
-    console.log(passwordStr);
+    // console.log(passwordStr);
     authStore.resetPassword(data).then(
       (response) => {
-        console.log(response);
+        // console.log(response);
         // console.log(response.data.value)
         if (response.status === 200 || response.status === 201) {
           router.push("/login");
@@ -93,12 +92,17 @@ const resetPassword = () => {
       (error) => {
         // const arr = Object.entries(error)
         registrationError.value = error;
-        console.error(error);
+        // console.error(error);
       }
     );
   } else {
     validated.value = false;
     validationMsg.value = "Password does not match";
+    notify({
+      title: "failed",
+      text: validationMsg,
+      type: "error",
+    });
   }
 };
 </script>

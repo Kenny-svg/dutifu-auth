@@ -52,7 +52,7 @@ const schema = yup.object().shape({
 const forgotPassword = (email) => {
   authStore.forgotPassword(email).then(
     (response) => {
-      console.log(response);
+      //   console.log(response);
       router.push(`/otp_sent/${email.email}`);
     },
     (error) => {
@@ -62,7 +62,7 @@ const forgotPassword = (email) => {
         text: error,
         type: "error",
       });
-      console.error(error);
+      //   console.error(error);
     }
   );
 };

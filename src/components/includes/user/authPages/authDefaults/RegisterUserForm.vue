@@ -149,7 +149,7 @@ const signUp = (values) => {
           type: "error",
         });
 
-        console.error(error);
+        // console.error(error);
       }
     );
   } else {
