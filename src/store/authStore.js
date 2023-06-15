@@ -32,6 +32,7 @@ export const useAuthStore = defineStore('auth',{
               this.loading = false; 
             }
           },
+         
           async login(values) {
             this.loading = true;
             try {
@@ -94,6 +95,18 @@ export const useAuthStore = defineStore('auth',{
              
             }
   
+          },
+          //get user
+          async getUser() {
+            this.loading = true
+            try {
+                const response =  await axios.get('auth/user');
+                return Promise.resolve(response)
+            } catch (error) {
+                return Promise.reject(error)
+            } finally {
+                this.loading = false
+            }
           },
     }
 })

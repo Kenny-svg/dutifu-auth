@@ -39,7 +39,6 @@ import { provide } from "vue";
 import * as yup from "yup";
 import { useAuthStore } from "../../../../../store/authStore";
 import { useRouter } from "vue-router";
-// import {defineProps} from 'vue'
 
 const router = useRouter();
 

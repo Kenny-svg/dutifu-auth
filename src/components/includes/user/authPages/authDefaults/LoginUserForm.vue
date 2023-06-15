@@ -1,6 +1,6 @@
 <template>
   <div v-if="isLoading">
-    <p class="text-primary font-bold text-center mb-5 mt-5">loading...</p>
+    <p class="text-primary font-bold text-center mb-5 mt-5">logging in</p>
   </div>
   <Form @submit="login" :validation-schema="schema">
     <div class="mb-6">
@@ -32,9 +32,6 @@
       <router-link class="-mt-5 mb-2" to="/forgot_password">
         <p>forgot password?</p>
       </router-link>
-    </div>
-    <div v-if="loginError">
-      <p class="text-red-600">email or password is incorrect</p>
     </div>
 
     <div class="flex items-start mb-6">
@@ -79,6 +76,7 @@ import * as yup from "yup";
 import { computed, ref } from "vue";
 import { useAuthStore } from "../../../../../store/authStore";
 import { useRouter } from "vue-router";
+import { notify } from "@kyvg/vue3-notification";
 
 const router = useRouter();
 
@@ -115,6 +113,11 @@ const login = (values) => {
     (error) => {
       loginError.value = error;
       console.error(error);
+      notify({
+        title: "Failed",
+        text: error,
+        type: "error",
+      });
     }
   );
 };

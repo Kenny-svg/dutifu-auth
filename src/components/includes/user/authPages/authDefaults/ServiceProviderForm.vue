@@ -1,4 +1,7 @@
 <template>
+  <div v-if="isLoading">
+    <p class="text-primary font-bold text-center mb-5 mt-5">reistering...</p>
+  </div>
   <Form @submit="signUp" :validation-schema="schema">
     <div class="mb-6">
       <label class="block mb-2 text-sm font-bold text-primary">Full name</label>
@@ -87,15 +90,12 @@
     <div v-if="success">
       {{ success.data.message }}
     </div>
-    <div v-for="error in registrationError" :key="error.id">
-      <p class="text-red-600">{{ error.toString() }}</p>
-    </div>
   </Form>
 </template>
 <script setup>
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useAuthStore } from "../../../../../store/authStore";
 import { useRouter } from "vue-router";
 import { notify } from "@kyvg/vue3-notification";
@@ -103,22 +103,16 @@ import { notify } from "@kyvg/vue3-notification";
 const router = useRouter();
 
 const authStore = useAuthStore();
+const isLoading = computed(() => authStore.loading);
 const password = ref("");
 const showPassword = ref(false);
 const comfirmPassword = ref("");
 const showcomfirmPassword = ref(false);
 const validated = ref(false);
 let validationMsg = ref("");
-// const name = ref('')
-// const email = ref('')
-// const phone = ref('')
+
 const success = ref("");
 const registrationError = ref(null);
-// notify({
-//   title: registrationError,
-//   text: "failed",
-//   type: "error",
-// });
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -149,12 +143,23 @@ const signUp = (values) => {
       (error) => {
         // const arr = Object.entries(error)
         registrationError.value = error;
+        notify({
+          title: "Failed",
+          text: "email is already used by another user ",
+          type: "error",
+        });
+
         console.error(error);
       }
     );
   } else {
     validated.value = false;
     validationMsg.value = "Password does not match";
+    notify({
+      title: "Failed",
+      text: validationMsg.value,
+      type: "error",
+    });
   }
 };
 
