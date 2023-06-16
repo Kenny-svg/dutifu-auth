@@ -27,12 +27,12 @@
       </span>
     </div>
 
-    <ErrorMessage name="password" />
     <div class="flex justify-end text-primary w-full">
       <router-link class="-mt-5 mb-2" to="/forgot_password">
         <p>forgot password?</p>
       </router-link>
     </div>
+    <ErrorMessage name="password" />
 
     <div class="flex items-start mb-6">
       <div class="flex items-center h-5">
