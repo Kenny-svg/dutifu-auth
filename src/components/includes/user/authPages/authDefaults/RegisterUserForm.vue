@@ -40,7 +40,10 @@
         :type="showPassword ? 'text' : 'password'"
         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
       />
-      <span class="absolute right-5 -mt-8" @click="toggleShowPassword">
+      <span
+        class="absolute right-5 -mt-8 text-primary"
+        @click="toggleShowPassword"
+      >
         <i :class="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
       </span>
     </div>
@@ -55,7 +58,10 @@
         :type="showcomfirmPassword ? 'text' : 'password'"
         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
       />
-      <span class="absolute right-5 -mt-8" @click="toggleShowcomfirmPassword">
+      <span
+        class="absolute right-5 -mt-8 text-primary"
+        @click="toggleShowcomfirmPassword"
+      >
         <i :class="showcomfirmPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
       </span>
     </div>
@@ -68,7 +74,7 @@
           id="remember"
           type="checkbox"
           value="false"
-          class="text-primary w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+          class="text-primary w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-8 text-primary00 dark:focus:ring-offset-gray-800"
         />
       </div>
       <label
@@ -85,7 +91,10 @@
       Sign up
     </button>
     <p class="text-center mb-10">
-      Already have an account? <span class="text-primary">login</span>
+      Already have an account?
+      <span class="text-primary"
+        ><router-link to="/login">login</router-link></span
+      >
     </p>
     <div v-if="success">
       {{ success.data.message }}

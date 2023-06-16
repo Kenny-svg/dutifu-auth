@@ -27,7 +27,10 @@
         Send email
       </button>
       <p class="text-center mb-10">
-        or <span class="text-primary">login</span>
+        or
+        <span class="text-primary"
+          ><router-link to="/login">login</router-link></span
+        >
       </p>
     </Form>
   </div>
